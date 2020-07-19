@@ -1,28 +1,71 @@
-# ParameterisedUrls
+# Parameterised Paths
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/parameterised_urls`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A little gem for matching potentially parameterised paths
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'parameterised_urls'
+gem 'parameterised-paths'
+```
+
+Or add this line to your gemspec
+
+```ruby
+spec.add_dependency 'parameterised-paths'
 ```
 
 And then execute:
 
-    $ bundle install
+```shell
+bundle install
+```
 
 Or install it yourself as:
 
-    $ gem install parameterised_urls
+```shell
+gem install parameterised-paths
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### Simple Paths
+
+```ruby
+require 'parameterised/paths'
+
+path = Parameterised::Paths::Path.new('/hello/world/')
+
+match = path.match('/hello/world')
+
+raise 'Paths do not match' if match.nil?
+```
+
+### Parameter Paths
+
+```ruby
+require 'parameterised/paths'
+
+path = Parameterised::Paths::Path.new('/hello/:param/')
+
+match = path.match('/hello/world')
+
+# Access parameter
+param = match.params['param']
+```
+
+### Shorthand methods
+
+```ruby
+require 'parameterised/paths'
+
+# Creating a path
+path = Parameterised::Paths.path('/hello/world')
+
+# Quick match
+match = Parameterised::Paths.match('/hello/world', '/hello/developer')
+```
 
 ## Development
 
@@ -32,5 +75,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/parameterised_urls.
-
+Bug reports and pull requests are welcome on [GitHub](https://github.com/chrisBirmingham/parameterised-paths).
