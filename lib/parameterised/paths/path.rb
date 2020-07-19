@@ -59,7 +59,7 @@ module Parameterised
           '(/\w+)'
         end
 
-        Regexp.new(path)
+        Regexp.new("^#{path}$")
       end
     end
   end
