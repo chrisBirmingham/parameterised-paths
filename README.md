@@ -64,7 +64,7 @@ require 'parameterised/paths'
 path = Parameterised::Paths.path('/hello/world')
 
 # Quick match
-match = Parameterised::Paths.match('/hello/world', '/hello/developer')
+match = Parameterised::Paths.path_match('/hello/world', '/hello/developer')
 ```
 
 ## Development
