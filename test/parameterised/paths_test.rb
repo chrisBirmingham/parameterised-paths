@@ -19,6 +19,20 @@ class ParameterisedPathsTest < Minitest::Test
     assert_nil match
   end
 
+  def test_windows_paths
+    path = Parameterised::Paths::Path.new('\simple\path')
+    match = path.match('\simple\path')
+
+    refute_nil match
+  end
+
+  def test_windows_and_linux_paths
+    path = Parameterised::Paths::Path.new('/simple/path')
+    match = path.match('\simple\path')
+
+    refute_nil match
+  end
+
   def test_single_parameter_match
     path = Parameterised::Paths::Path.new('/simple/:path')
     match = path.match('/simple/match')

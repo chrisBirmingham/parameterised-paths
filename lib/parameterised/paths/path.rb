@@ -22,6 +22,8 @@ module Parameterised
       #   A PathMatch if we have encountered a match or nil when there
       #   if no match
       def match(path)
+        path = normalise_path(path)
+
         unless @path.is_a?(Regexp)
           return @path == path ? PathMatch.new(@original_path) : nil
         end
@@ -43,6 +45,15 @@ module Parameterised
 
       private
 
+      # Normalise the provided path removing problematic characters
+      # @param path [String]
+      # @return [String]
+      def normalise_path(path)
+        # Remove windows specific separators
+        path = path.gsub('\\', '/')
+        Regexp.escape(path)
+      end
+
       # Attempt to parse our given path
       # @param path [String]
       #   The path to parse
@@ -50,6 +61,8 @@ module Parameterised
       #   The original path if there are no parameters, Regexp if is did
       #   contain parameters
       def parse_path(path)
+        path = normalise_path(path)
+
         # if we do not have param sections, just return the string
         return path unless path.include?('/:')
 
