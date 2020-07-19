@@ -35,7 +35,7 @@ gem install parameterised-paths
 ```ruby
 require 'parameterised/paths'
 
-path = Parameterised::Paths::Path.new('/hello/world/')
+path = Parameterised::Paths::Path.new('/hello/world')
 
 match = path.match('/hello/world')
 
@@ -47,7 +47,7 @@ raise 'Paths do not match' if match.nil?
 ```ruby
 require 'parameterised/paths'
 
-path = Parameterised::Paths::Path.new('/hello/:param/')
+path = Parameterised::Paths::Path.new('/hello/:param')
 
 match = path.match('/hello/world')
 
