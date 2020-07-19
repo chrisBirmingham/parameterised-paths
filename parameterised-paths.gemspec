@@ -12,9 +12,9 @@ Gem::Specification.new do |spec|
     'chris.birmingham@hotmail.co.uk'
   ]
 
-  spec.summary = ''
-  spec.description = ''
-  spec.homepage = ''
+  spec.summary = 'A little gem for matching potentially parameterised paths'
+  spec.description = 'A little gem for matching potentially parameterised paths'
+  spec.homepage = 'https://github.com/chrisBirmingham/parameterised-paths'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
 
   spec.files = Dir['lib/**/*'] + ['LICENSE']
